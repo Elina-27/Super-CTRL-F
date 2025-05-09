@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Ctrl+F</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f4f4f9;
+            min-width: 400px;
+        }
+
+        .container {
+            background-color: #ffffffe1;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .search-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            flex: none;
+        }
+
+        .button-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        button {
+            font-size: 14px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: #333;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .highlighted {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        #match-position {
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        #search-timer {
+            color: #666;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-row">
+            <input type="text" id="word1" placeholder="Word 1">
+            <input type="number" id="charGap" placeholder="Gap" min="0" value="20">
+            <input type="text" id="word2" placeholder="Word 2">
+        </div>
+        <div class="button-row">
+            <div class="search-container">
+                <div class="spinner" id="search-spinner"></div>
+                <span id="search-timer">0.00s</span>
+            </div>
+            <button id="search">Search</button>
+            <button id="clear">Clear</button>
+            <button id="prev">↑</button>
+            <button id="next">↓</button>
+            <span id="match-position">0/0</span>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
